@@ -1349,7 +1349,7 @@ if (goog.DEPENDENCIES_ENABLED) {
       var path = scripts[i];
       if (path) {
         var loadFlags = deps.loadFlags[path] || {};
-        var needsTranspile = goog.needsTranspile_(loadFlags['lang']);
+        var needsTranspile = goog.needsTranspile_(loadFlags['lang']) || (path.search("closure-node-modules") > -1);
         if (loadFlags['module'] == 'goog' || needsTranspile) {
           goog.importProcessedScript_(
               goog.basePath + path, loadFlags['module'] == 'goog',
